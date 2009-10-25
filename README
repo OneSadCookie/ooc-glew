@@ -1,0 +1,5 @@
+out/glew.ooc is all you need.  Generated against glew 1.5.1.
+
+If you want to remake it for whatever reason,
+
+ruby glewby.rb --glew-header <path/to/GL/glew.h> --template-directory in --output-directory out

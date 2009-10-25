@@ -1,0 +1,74 @@
+include GL/glew
+
+GLenum: extern cover from unsigned int
+GLbitfield: extern cover from unsigned int
+GLuint: extern cover from unsigned int
+GLint: extern cover from int
+GLsizei: extern cover from int
+GLboolean: extern cover from unsigned char
+GLbyte: extern cover from signed char
+GLshort: extern cover from short
+GLubyte: extern cover from unsigned char
+GLushort: extern cover from unsigned short
+GLulong: extern cover from unsigned long
+GLfloat: extern cover from float
+GLclampf: extern cover from float
+GLdouble: extern cover from double
+GLclampd: extern cover from double
+GLvoid: extern cover from void
+GLint64EXT: extern cover from long long
+GLuint64EXT: extern cover from unsigned long long
+GLhalf: extern cover from unsigned short
+GLcharARB: extern cover from char
+GLhandleARB: extern cover from unsigned int // wrong on Mac OS X...
+GLchar: extern cover from char
+GLsizeiptrARB: extern cover from ptrdiff_t
+GLintptrARB: extern cover from ptrdiff_t 
+GLsizeiptr: extern cover from ptrdiff_t
+GLintptr: extern cover from ptrdiff_t
+
+<% extensions.keys.sort.each do |extension| %>
+GLEW_<%= extension %>: extern GLboolean<% end %>
+
+<% constants.keys.sort.each do |constant| %>
+GL_<%= constant %>: extern GLenum<% end %>
+
+<%
+C_TO_OOC = {
+    'void' => 'Void',
+    'char' => 'Char',
+}
+
+# ooc's support for "const" seems partial, so strip 'em
+# also sanitize a few C types
+class SimpleType
+    def ooc_type
+        C_TO_OOC[self.name] || self.name
+    end
+end
+
+class PointerType
+    def ooc_type
+        self.type.ooc_type + '*'
+    end
+end
+
+# glew.h uses some ooc reserved words
+KW = ['func']
+
+anonidx = 0 %>
+<% functions.each do |name, function| %>
+gl<%= name %>: extern func (<%= function.args.map { |arg|
+    if arg.name && arg.name.length > 0 then
+        if KW.include?(arg.name) then
+            arg_name = '_' + arg.name
+        else
+            arg_name = arg.name
+        end
+    else
+        arg_name = 'anon' + (anonidx += 1)
+    end
+    arg_name + ':' + arg.type.ooc_type
+}.join(', ') %>) -> <%= function.return_type.ooc_type %><% end %>
+
+glewInit: extern func
