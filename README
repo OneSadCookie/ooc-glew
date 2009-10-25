@@ -1,7 +1,10 @@
+glew installed and out/glew.ooc are all you need to use this.
+Generated against glew 1.5.1.
+
 GLEWby home is http://onesadcookie.com/svn/GLEWby
+glew home is http://glew.sourceforge.net/
 
-out/glew.ooc is all you need.  Generated against glew 1.5.1.
-
-If you want to remake it for whatever reason,
+If you want to remake it for whatever reason, you'll need glew and ruby
+installed, then:
 
 ruby glewby.rb --glew-header <path/to/GL/glew.h> --template-directory in --output-directory out
