@@ -1,0 +1,5 @@
+Name: OpenGL
+Description: OpenGL
+Pkgs: gl, glu
+Includes: GL/glew.h
+SourcePath: ./out
