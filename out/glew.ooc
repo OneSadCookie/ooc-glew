@@ -1,27 +1,27 @@
 include GL/glew
 
-GLenum: extern cover from unsigned int
-GLbitfield: extern cover from unsigned int
-GLuint: extern cover from unsigned int
-GLint: extern cover from int
-GLsizei: extern cover from int
-GLboolean: extern cover from unsigned char
-GLbyte: extern cover from signed char
+GLenum: extern cover from UInt
+GLbitfield: extern cover from UInt
+GLuint: extern cover from UInt
+GLint: extern cover from Int
+GLsizei: extern cover from Int
+GLboolean: extern cover from UChar
+GLbyte: extern cover from SChar
 GLshort: extern cover from short
-GLubyte: extern cover from unsigned char
-GLushort: extern cover from unsigned short
-GLulong: extern cover from unsigned long
-GLfloat: extern cover from float
-GLclampf: extern cover from float
-GLdouble: extern cover from double
-GLclampd: extern cover from double
-GLvoid: extern cover from void
-GLint64EXT: extern cover from long long
-GLuint64EXT: extern cover from unsigned long long
-GLhalf: extern cover from unsigned short
-GLcharARB: extern cover from char
-GLhandleARB: extern cover from unsigned int // wrong on Mac OS X...
-GLchar: extern cover from char
+GLubyte: extern cover from UChar
+GLushort: extern cover from UShort
+GLulong: extern cover from ULong
+GLfloat: extern cover from Float
+GLclampf: extern cover from Float
+GLdouble: extern cover from Double
+GLclampd: extern cover from Double
+GLvoid: extern cover from Void
+GLint64EXT: extern cover from LLong
+GLuint64EXT: extern cover from ULLong
+GLhalf: extern cover from UShort
+GLcharARB: extern cover from Char
+GLhandleARB: extern cover from UInt // wrong on Mac OS X...
+GLchar: extern cover from Char
 GLsizeiptrARB: extern cover from ptrdiff_t
 GLintptrARB: extern cover from ptrdiff_t 
 GLsizeiptr: extern cover from ptrdiff_t
